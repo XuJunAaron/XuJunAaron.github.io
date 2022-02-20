@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Docker概述 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. Docker镜像(images)   Docker镜像是一种轻量级、可执行的独立软件包。它包含了某个运行环境所需要的内容，包括依赖、运行时、环境变量和配置文件等。  1.1 UnionFS(联合文件系统)   UnionFS是一种分层、轻量并且高性能的文件系统，它支持将文件系统的修改作为一次提交一层层的叠加，UnionFS文件系统是Docker镜像的基础。  1.2 Docker的镜像加载原">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker概述">
+<meta property="og:url" content="http://example.com/2022/02/21/DockerSummary/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. Docker镜像(images)   Docker镜像是一种轻量级、可执行的独立软件包。它包含了某个运行环境所需要的内容，包括依赖、运行时、环境变量和配置文件等。  1.1 UnionFS(联合文件系统)   UnionFS是一种分层、轻量并且高性能的文件系统，它支持将文件系统的修改作为一次提交一层层的叠加，UnionFS文件系统是Docker镜像的基础。  1.2 Docker的镜像加载原">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-02-20T17:01:01.411Z">
+<meta property="article:modified_time" content="2022-02-20T17:01:01.407Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DockerSummary" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/02/21/DockerSummary/" class="article-date">
+  <time datetime="2022-02-20T17:01:01.411Z" itemprop="datePublished">2022-02-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Docker概述
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-Docker镜像-images"><a href="#1-Docker镜像-images" class="headerlink" title="1. Docker镜像(images)"></a>1. Docker镜像(images)</h3><blockquote>
+<p>  <strong>Docker镜像是一种轻量级、可执行的独立软件包。它包含了某个运行环境所需要的内容，包括依赖、运行时、环境变量和配置文件等。</strong></p>
+</blockquote>
+<h4 id="1-1-UnionFS-联合文件系统"><a href="#1-1-UnionFS-联合文件系统" class="headerlink" title="1.1 UnionFS(联合文件系统)"></a>1.1 UnionFS(联合文件系统)</h4><blockquote>
+<p>  UnionFS是一种分层、轻量并且高性能的文件系统，它支持<strong>将文件系统的修改作为一次提交一层层的叠加</strong>，UnionFS文件系统是Docker镜像的基础。</p>
+</blockquote>
+<h4 id="1-2-Docker的镜像加载原理"><a href="#1-2-Docker的镜像加载原理" class="headerlink" title="1.2 Docker的镜像加载原理"></a>1.2 Docker的镜像加载原理</h4><h5 id="1-2-1-bootfs-boot-file-system"><a href="#1-2-1-bootfs-boot-file-system" class="headerlink" title="1.2.1 bootfs(boot file system)"></a>1.2.1 bootfs(boot file system)</h5><blockquote>
+<p>  bootfs主要包含bootloader和kernel，bootloader主要是作用是引导加载kernel。<strong>bootfs是Docker镜像的最底层</strong>，当bootfs加载完成之后，Docker的内存使用权转交给了linux的内核，此时就会卸载bootfs。</p>
+</blockquote>
+<h5 id="1-2-2-rootfs-root-file-system"><a href="#1-2-2-rootfs-root-file-system" class="headerlink" title="1.2.2 rootfs(root file system)"></a>1.2.2 rootfs(root file system)</h5><blockquote>
+<p>  rootfs在bootfs之上，包含了典型linux系统中的标准目录和文件，例如/usr /etc /dev等，相当于实现了一个<strong>精简版的发行版linux系统</strong>，例如Ubuntu、CentOS等。</p>
+</blockquote>
+<p>  对于一个精简的OS，rootfs可以很小，只需要包括最基本的命令、工具和程序库就可以了，底层直接使用宿主机host的kernel，这就是Docker镜像可以做到很小的原因。并且Docker镜像的分层文件系统的每一层都可以进行资源共享。</p>
+<p>  另外需要注意的是，<strong>Docker镜像的文件层都是只读的</strong>，当Docker容器启动时，一个新的可写层会被加载到镜像的顶部，这一层通常称为“容器层”，容器层的下层都称为“镜像层”。</p>
+<h3 id="2-容器数据卷-volume"><a href="#2-容器数据卷-volume" class="headerlink" title="2. 容器数据卷(volume)"></a>2. 容器数据卷(volume)</h3><blockquote>
+<p>  卷的设计目的就是容器的数据持久化和数据共享，独立在容器的生命周期之外，Docker不会在删除容器时删除其挂载的数据卷。</p>
+</blockquote>
+<h4 id="2-1-数据卷挂载的命令"><a href="#2-1-数据卷挂载的命令" class="headerlink" title="2.1 数据卷挂载的命令"></a>2.1 数据卷挂载的命令</h4><p>启动容器时挂载数据卷的命令：</p>
+<pre><code>docker run -v /宿主机路径:/容器内路径 镜像名
+</code></pre>
+<p>例如：</p>
+<pre><code>docker run -v /docker-volume/redis:/volume redis
+</code></pre>
+<p>启动容器时挂载<strong>只读</strong>数据卷的命令：</p>
+<pre><code>docker run -v /宿主机路径:/容器内路径:ro 镜像名
+</code></pre>
+<p>例如：</p>
+<pre><code>docker run -v /docker-volume/redis:/volume:ro redis
+</code></pre>
+<p>挂载了只读数据卷后，容器对卷只有读权限，没有写权限。</p>
+<h4 id="2-2-DockerFile中挂载卷"><a href="#2-2-DockerFile中挂载卷" class="headerlink" title="2.2 DockerFile中挂载卷"></a>2.2 DockerFile中挂载卷</h4><p>编写DockerFile如下，文件名为volume-test</p>
+<pre><code>#volume test
+FROM centos:latest
+VOLUME [&quot;/volume1&quot;,&quot;/volume2&quot;]
+CMD echo &quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;docker started&quot;
+CMD /bin/bash
+</code></pre>
+<p>执行命令</p>
+<pre><code>docker build -f /xxx/xxx/volume-test -t hic/ctos .
+
+-f 表示指定DockerFile
+-t 不知道啥意思，后边跟镜像名称
+最后的 . 也没明白啥意思
+</code></pre>
+<p>执行后会在本地构建好镜像hic/ctos，之后启动该镜像，启动好以后用inspect命令查看镜像详细信息，信息中包含如下：</p>
+<pre><code>&quot;Mounts&quot;: [
+        &#123;
+            &quot;Type&quot;: &quot;volume&quot;,
+            &quot;Name&quot;: &quot;7eb57a72c7c541caae610a5b36e4ba7974369dc929930ee26747f7511b896a96&quot;,
+            &quot;Source&quot;: &quot;/var/lib/docker/volumes/7eb57a72c7c541caae610a5b36e4ba7974369dc929930ee26747f7511b896a96/_data&quot;,
+            &quot;Destination&quot;: &quot;/volume1&quot;,
+            &quot;Driver&quot;: &quot;local&quot;,
+            &quot;Mode&quot;: &quot;&quot;,
+            &quot;RW&quot;: true,
+            &quot;Propagation&quot;: &quot;&quot;
+        &#125;,
+        &#123;
+            &quot;Type&quot;: &quot;volume&quot;,
+            &quot;Name&quot;: &quot;f40e01c85d4c9675fad55cbb903b7c3f40841d6a6ed1d46fd8bbf4f4934b07fb&quot;,
+            &quot;Source&quot;: &quot;/var/lib/docker/volumes/f40e01c85d4c9675fad55cbb903b7c3f40841d6a6ed1d46fd8bbf4f4934b07fb/_data&quot;,
+            &quot;Destination&quot;: &quot;/volume2&quot;,
+            &quot;Driver&quot;: &quot;local&quot;,
+            &quot;Mode&quot;: &quot;&quot;,
+            &quot;RW&quot;: true,
+            &quot;Propagation&quot;: &quot;&quot;
+        &#125;
+    ],
+</code></pre>
+<p>可以看到，容器已经挂载了volume1、volume2俩个卷。</p>
+<h4 id="2-3-2-3-数据卷的传递和共享-volumes-from"><a href="#2-3-2-3-数据卷的传递和共享-volumes-from" class="headerlink" title="2.3 2.3 数据卷的传递和共享(volumes-from)"></a>2.3 2.3 数据卷的传递和共享(volumes-from)</h4><p>还是之前的镜像hic/ctos</p>
+<pre><code>#volume test
+FROM centos:latest
+VOLUME [&quot;/volume1&quot;,&quot;/volume2&quot;]
+CMD echo &quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;docker started&quot;
+CMD /bin/bash
+</code></pre>
+<p>启动该镜像，命名为dc01</p>
+<pre><code>docker run -it --name dc01 hic/ctos
+</code></pre>
+<p>容器dc01已经成功挂载了/volume1、/volume2俩个卷。</p>
+<p>再执行命令</p>
+<pre><code>docker run -it --name dc02 --volumes-from dc01 hic/ctos    
+</code></pre>
+<p> 进入容器dc02查看，发现容器内部也已经成功挂载了/volume1、/volume2，删除掉容器dc01后，dc02的挂载仍然生效。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/02/21/DockerSummary/" data-id="ckzvipuz400026rxfa0qc26bz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/02/21/DockerFileResolve/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DockerFile解析
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/02/21/DockerCommonCommands/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Docker常用命令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/02/21/springboot/">SpringBoot概述</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/DockerFileResolve/">DockerFile解析</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/DockerSummary/">Docker概述</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/DockerCommonCommands/">Docker常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/gitStart/">git入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
