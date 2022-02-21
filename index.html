@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="分享关于Java以及Spring生态的开发使用经验">
@@ -117,6 +117,16 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -149,105 +159,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/markdownStart/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Aaron">
-      <meta itemprop="description" content="分享关于Java以及Spring生态的开发使用经验">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aaron's Notes">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/21/markdownStart/" class="post-title-link" itemprop="url">markdown入门</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-21 15:09:39" itemprop="dateCreated datePublished" datetime="2022-02-21T15:09:39+08:00">2022-02-21</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Typora入门"><a href="#Typora入门" class="headerlink" title="Typora入门"></a>Typora入门</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>标题一共有6级，用#和空格实现，标题前面一个#代表一级标题，两个#代表二级标题，以此类推，最多可以加六个#代表六级标题</p>
-<h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p>在要强调的内容前后各加两个<em>即表示强调，举例：*<em>这是要强调的内容</em></em></p>
-<h2 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h2><p>在需要用斜体表示的内容前后各加一个*<em>表示斜体</em></p>
-<h2 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h2><p>在需要删除的内容前后加两个~表示删除，举例：<del>需要删除的内容</del></p>
-<h2 id="list列表处理"><a href="#list列表处理" class="headerlink" title="list列表处理"></a>list列表处理</h2><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>输入数字1和.和空格，自动开始有序列表，shift加Tab退出有序列表</p>
-<ol>
-<li>有序列表</li>
-<li>有序列表</li>
-<li>有序列表</li>
-</ol>
-<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>输入+或-或*和空格，自动开始无序列表</p>
-<ul>
-<li>无序列表</li>
-<li>无序列表</li>
-<li>无序列表</li>
-</ul>
-<h2 id="Table表格"><a href="#Table表格" class="headerlink" title="Table表格"></a>Table表格</h2><p>Ctrl加T，在弹出的表格中选择行数和列数</p>
-<table>
-<thead>
-<tr>
-<th>value</th>
-<th>value</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>value</td>
-<td>value</td>
-<td>value</td>
-</tr>
-</tbody></table>
-<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>输入三个或三个以上-或*后按回车，即可出现分割线</p>
-<hr>
-<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>直接将图片拖入即可</p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>[链接提示]+(链接地址)，举例：<a target="_blank" rel="noopener" href="https://www.baidu.com/">百度</a></p>
-<h2 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h2><p>$$加回车<br>$$<br>y = 2x ^ 2 + 3x^3;<br>$$</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><p>代码的两端各加一个`</p>
-<p>举例：这是一个行内代码   <code>System.out.print(&quot;Hello World!&quot;);</code></p>
-<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>输入三个~后按回车即可出现代码块编辑器然后选择编程语言</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Hello World.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="导出文件"><a href="#导出文件" class="headerlink" title="导出文件"></a>导出文件</h2><p>可以导出pdf或者html格式的文件</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/springboot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -272,7 +183,16 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-02-21 01:02:15" itemprop="dateCreated datePublished" datetime="2022-02-21T01:02:15+08:00">2022-02-21</time>
+              <time title="创建时间：2022-02-21 23:36:18" itemprop="dateCreated datePublished" datetime="2022-02-21T23:36:18+08:00">2022-02-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
+                </span>
             </span>
 
           
@@ -395,7 +315,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/DockerFileResolve/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/markdownStart/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -409,7 +329,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/21/DockerFileResolve/" class="post-title-link" itemprop="url">DockerFile解析</a>
+            <a href="/2022/02/21/markdownStart/" class="post-title-link" itemprop="url">markdown入门</a>
         </h2>
 
         <div class="post-meta">
@@ -419,7 +339,16 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-02-21 01:01:20" itemprop="dateCreated datePublished" datetime="2022-02-21T01:01:20+08:00">2022-02-21</time>
+              <time title="创建时间：2022-02-21 23:35:09" itemprop="dateCreated datePublished" datetime="2022-02-21T23:35:09+08:00">2022-02-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/markdown/" itemprop="url" rel="index"><span itemprop="name">markdown</span></a>
+                </span>
             </span>
 
           
@@ -433,29 +362,147 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="1-DockerFile"><a href="#1-DockerFile" class="headerlink" title="1. DockerFile"></a>1. DockerFile</h3><blockquote>
-<p>​    DockerFile是用来构建Docker镜像的的构建文件，是由一系列命令和参数组成的脚本。</p>
-</blockquote>
-<h4 id="1-1-DockerFile内容基础"><a href="#1-1-DockerFile内容基础" class="headerlink" title="1.1 DockerFile内容基础"></a>1.1 DockerFile内容基础</h4><ol>
-<li>每条<strong>Docker指令</strong>都必须大写，并且后变最少跟随一个参数</li>
-<li>指令按照从上到下，顺序执行</li>
-<li>#表示注释</li>
-<li>每条指令都会创建一个新的镜像层，并对镜像进行提交</li>
+          <h1 id="Typora入门"><a href="#Typora入门" class="headerlink" title="Typora入门"></a>Typora入门</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>标题一共有6级，用#和空格实现，标题前面一个#代表一级标题，两个#代表二级标题，以此类推，最多可以加六个#代表六级标题</p>
+<h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p>在要强调的内容前后各加两个<em>即表示强调，举例：*<em>这是要强调的内容</em></em></p>
+<h2 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h2><p>在需要用斜体表示的内容前后各加一个*<em>表示斜体</em></p>
+<h2 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h2><p>在需要删除的内容前后加两个~表示删除，举例：<del>需要删除的内容</del></p>
+<h2 id="list列表处理"><a href="#list列表处理" class="headerlink" title="list列表处理"></a>list列表处理</h2><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>输入数字1和.和空格，自动开始有序列表，shift加Tab退出有序列表</p>
+<ol>
+<li>有序列表</li>
+<li>有序列表</li>
+<li>有序列表</li>
 </ol>
-<h4 id="1-2-DockerFile指令详解"><a href="#1-2-DockerFile指令详解" class="headerlink" title="1.2 DockerFile指令详解"></a>1.2 DockerFile指令详解</h4><ol>
-<li>FROM 指定当前镜像是基于哪个镜像的</li>
-<li>MAINTAINER 镜像维护者的姓名和邮箱地址</li>
-<li>RUN 容器构建时要运行的命令</li>
-<li>EXPOSE 容器启动后对外暴露出的端口</li>
-<li>WORKDIR 指定容器启动后，终端登录进来默认的路径</li>
-<li>ENV 用于在构建镜像的过程中设置环境变量</li>
-<li>ADD 将宿主机中的文件复制到容器并且自动处理URL和tar包解压</li>
-<li>COPY</li>
-<li>VOLUMES 容器数据卷，用于挂载数据卷</li>
-<li>CMD 指定容器启动时要运行的命令，DockerFile中只有最后一个CMD会生效，并且会被run参数替换</li>
-<li>ENTRYPOINT 指定容器启动时候要运行的命令</li>
-<li>ONBUILD 当前镜像被继承时要执行的命令，即父镜像被子镜像继承，子镜像构建时会触发父镜像的ONBUILD指令</li>
+<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>输入+或-或*和空格，自动开始无序列表</p>
+<ul>
+<li>无序列表</li>
+<li>无序列表</li>
+<li>无序列表</li>
+</ul>
+<h2 id="Table表格"><a href="#Table表格" class="headerlink" title="Table表格"></a>Table表格</h2><p>Ctrl加T，在弹出的表格中选择行数和列数</p>
+<table>
+<thead>
+<tr>
+<th>value</th>
+<th>value</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>value</td>
+<td>value</td>
+<td>value</td>
+</tr>
+</tbody></table>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>输入三个或三个以上-或*后按回车，即可出现分割线</p>
+<hr>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>直接将图片拖入即可</p>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>[链接提示]+(链接地址)，举例：<a target="_blank" rel="noopener" href="https://www.baidu.com/">百度</a></p>
+<h2 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h2><p>$$加回车<br>$$<br>y = 2x ^ 2 + 3x^3;<br>$$</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><p>代码的两端各加一个`</p>
+<p>举例：这是一个行内代码   <code>System.out.print(&quot;Hello World!&quot;);</code></p>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>输入三个~后按回车即可出现代码块编辑器然后选择编程语言</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Hello World.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="导出文件"><a href="#导出文件" class="headerlink" title="导出文件"></a>导出文件</h2><p>可以导出pdf或者html格式的文件</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/gitStart/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Aaron">
+      <meta itemprop="description" content="分享关于Java以及Spring生态的开发使用经验">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aaron's Notes">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/21/gitStart/" class="post-title-link" itemprop="url">git入门</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-21 23:34:40" itemprop="dateCreated datePublished" datetime="2022-02-21T23:34:40+08:00">2022-02-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="git操作手册"><a href="#git操作手册" class="headerlink" title="git操作手册"></a>git操作手册</h1><p>查看<strong>本地</strong>所有分支</p>
+<p><code>git branch</code></p>
+<p>查看<strong>远程</strong>仓库所有分支</p>
+<p><code>git branch -a</code></p>
+<p>将远程仓库里的指定分支拉取到本地（本地不存在的分支）</p>
+<p><code>git checkout -b 本地分支名 origin/远程分支名</code></p>
+<p>这样在本地会自动创建一个新分支，并与指定的远程分支关联起来，并且会自动切换到该本地分支</p>
+<p>如果出现以下提示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fatal: Cannot update paths and switch to branch &#x27;dev2&#x27; at the same time.</span><br><span class="line">Did you intend to checkout &#x27;origin/dev2&#x27; which can not be resolved as commit?</span><br></pre></td></tr></table></figure>
+
+<p>表示拉取不成功，先执行<code>git fetch</code>，再执行上述代码即可</p>
+<p>切换到其他分支</p>
+<p><code>git checkout 分支名</code></p>
+<p>拉取<strong>最新</strong>的信息</p>
+<p><code>git pull</code></p>
+<p>查看其他人的推送记录</p>
+<p><code>git log</code></p>
+<p>提交修改后的文件</p>
+<p><code>git commit -am &#39;提交记录&#39;</code></p>
+<p>将提交推送至远程仓库</p>
+<p><code>git push</code></p>
+<p>为当前仓库设置提交作者的姓名和邮箱</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name &quot;xxx&quot;</span><br><span class="line">git config user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
+
+<p>将指定分支合并到当前分支</p>
+<p><code>git merge 分支名</code></p>
+<p>删除<strong>远程</strong>分支</p>
+<ol>
+<li>同步远程分支信息 <code>git fetch -p origin</code></li>
+<li>删除对应分支 <code>git push origin --delete 分支名</code></li>
 </ol>
+<p>删除本地分支</p>
+<p><code>git branch -d 分支名</code></p>
 
       
     </div>
@@ -499,7 +546,16 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-02-21 01:01:01" itemprop="dateCreated datePublished" datetime="2022-02-21T01:01:01+08:00">2022-02-21</time>
+              <time title="创建时间：2022-02-21 23:34:07" itemprop="dateCreated datePublished" datetime="2022-02-21T23:34:07+08:00">2022-02-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                </span>
             </span>
 
           
@@ -616,6 +672,95 @@ CMD /bin/bash
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/DockerFileResolve/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Aaron">
+      <meta itemprop="description" content="分享关于Java以及Spring生态的开发使用经验">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aaron's Notes">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/21/DockerFileResolve/" class="post-title-link" itemprop="url">DockerFile解析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-21 23:33:27" itemprop="dateCreated datePublished" datetime="2022-02-21T23:33:27+08:00">2022-02-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-DockerFile"><a href="#1-DockerFile" class="headerlink" title="1. DockerFile"></a>1. DockerFile</h3><blockquote>
+<p>​    DockerFile是用来构建Docker镜像的的构建文件，是由一系列命令和参数组成的脚本。</p>
+</blockquote>
+<h4 id="1-1-DockerFile内容基础"><a href="#1-1-DockerFile内容基础" class="headerlink" title="1.1 DockerFile内容基础"></a>1.1 DockerFile内容基础</h4><ol>
+<li>每条<strong>Docker指令</strong>都必须大写，并且后变最少跟随一个参数</li>
+<li>指令按照从上到下，顺序执行</li>
+<li>#表示注释</li>
+<li>每条指令都会创建一个新的镜像层，并对镜像进行提交</li>
+</ol>
+<h4 id="1-2-DockerFile指令详解"><a href="#1-2-DockerFile指令详解" class="headerlink" title="1.2 DockerFile指令详解"></a>1.2 DockerFile指令详解</h4><ol>
+<li>FROM 指定当前镜像是基于哪个镜像的</li>
+<li>MAINTAINER 镜像维护者的姓名和邮箱地址</li>
+<li>RUN 容器构建时要运行的命令</li>
+<li>EXPOSE 容器启动后对外暴露出的端口</li>
+<li>WORKDIR 指定容器启动后，终端登录进来默认的路径</li>
+<li>ENV 用于在构建镜像的过程中设置环境变量</li>
+<li>ADD 将宿主机中的文件复制到容器并且自动处理URL和tar包解压</li>
+<li>COPY</li>
+<li>VOLUMES 容器数据卷，用于挂载数据卷</li>
+<li>CMD 指定容器启动时要运行的命令，DockerFile中只有最后一个CMD会生效，并且会被run参数替换</li>
+<li>ENTRYPOINT 指定容器启动时候要运行的命令</li>
+<li>ONBUILD 当前镜像被继承时要执行的命令，即父镜像被子镜像继承，子镜像构建时会触发父镜像的ONBUILD指令</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/DockerCommonCommands/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -640,7 +785,16 @@ CMD /bin/bash
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-02-21 01:00:25" itemprop="dateCreated datePublished" datetime="2022-02-21T01:00:25+08:00">2022-02-21</time>
+              <time title="创建时间：2022-02-21 23:32:23" itemprop="dateCreated datePublished" datetime="2022-02-21T23:32:23+08:00">2022-02-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                </span>
             </span>
 
           
@@ -861,7 +1015,7 @@ CMD /bin/bash
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/gitStart/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -875,7 +1029,7 @@ CMD /bin/bash
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/21/gitStart/" class="post-title-link" itemprop="url">git入门</a>
+            <a href="/2022/02/21/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
         </h2>
 
         <div class="post-meta">
@@ -885,97 +1039,16 @@ CMD /bin/bash
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-02-21 00:45:40" itemprop="dateCreated datePublished" datetime="2022-02-21T00:45:40+08:00">2022-02-21</time>
+              <time title="创建时间：2022-02-21 23:26:39" itemprop="dateCreated datePublished" datetime="2022-02-21T23:26:39+08:00">2022-02-21</time>
             </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="git操作手册"><a href="#git操作手册" class="headerlink" title="git操作手册"></a>git操作手册</h1><p>查看<strong>本地</strong>所有分支</p>
-<p><code>git branch</code></p>
-<p>查看<strong>远程</strong>仓库所有分支</p>
-<p><code>git branch -a</code></p>
-<p>将远程仓库里的指定分支拉取到本地（本地不存在的分支）</p>
-<p><code>git checkout -b 本地分支名 origin/远程分支名</code></p>
-<p>这样在本地会自动创建一个新分支，并与指定的远程分支关联起来，并且会自动切换到该本地分支</p>
-<p>如果出现以下提示：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fatal: Cannot update paths and switch to branch &#x27;dev2&#x27; at the same time.</span><br><span class="line">Did you intend to checkout &#x27;origin/dev2&#x27; which can not be resolved as commit?</span><br></pre></td></tr></table></figure>
-
-<p>表示拉取不成功，先执行<code>git fetch</code>，再执行上述代码即可</p>
-<p>切换到其他分支</p>
-<p><code>git checkout 分支名</code></p>
-<p>拉取<strong>最新</strong>的信息</p>
-<p><code>git pull</code></p>
-<p>查看其他人的推送记录</p>
-<p><code>git log</code></p>
-<p>提交修改后的文件</p>
-<p><code>git commit -am &#39;提交记录&#39;</code></p>
-<p>将提交推送至远程仓库</p>
-<p><code>git push</code></p>
-<p>为当前仓库设置提交作者的姓名和邮箱</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name &quot;xxx&quot;</span><br><span class="line">git config user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-
-<p>将指定分支合并到当前分支</p>
-<p><code>git merge 分支名</code></p>
-<p>删除<strong>远程</strong>分支</p>
-<ol>
-<li>同步远程分支信息 <code>git fetch -p origin</code></li>
-<li>删除对应分支 <code>git push origin --delete 分支名</code></li>
-</ol>
-<p>删除本地分支</p>
-<p><code>git branch -d 分支名</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/20/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Aaron">
-      <meta itemprop="description" content="分享关于Java以及Spring生态的开发使用经验">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aaron's Notes">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/20/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-20 18:34:12" itemprop="dateCreated datePublished" datetime="2022-02-20T18:34:12+08:00">2022-02-20</time>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/demo/" itemprop="url" rel="index"><span itemprop="name">demo</span></a>
+                </span>
             </span>
 
           
@@ -1086,6 +1159,14 @@ CMD /bin/bash
           <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
