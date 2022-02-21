@@ -145,6 +145,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/markdownStart/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/21/markdownStart/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-21 15:08:03" itemprop="dateCreated datePublished" datetime="2022-02-21T15:08:03+08:00">2022-02-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<h2 id="markdown入门"><a href="#markdown入门" class="headerlink" title="markdown入门"></a>markdown入门</h2><h1 id="Typora入门"><a href="#Typora入门" class="headerlink" title="Typora入门"></a>Typora入门</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>标题一共有6级，用#和空格实现，标题前面一个#代表一级标题，两个#代表二级标题，以此类推，最多可以加六个#代表六级标题</p>
+<h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p>在要强调的内容前后各加两个<em>即表示强调，举例：*<em>这是要强调的内容</em></em></p>
+<h2 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h2><p>在需要用斜体表示的内容前后各加一个*<em>表示斜体</em></p>
+<h2 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h2><p>在需要删除的内容前后加两个~表示删除，举例：<del>需要删除的内容</del></p>
+<h2 id="list列表处理"><a href="#list列表处理" class="headerlink" title="list列表处理"></a>list列表处理</h2><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>输入数字1和.和空格，自动开始有序列表，shift加Tab退出有序列表</p>
+<ol>
+<li>有序列表</li>
+<li>有序列表</li>
+<li>有序列表</li>
+</ol>
+<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>输入+或-或*和空格，自动开始无序列表</p>
+<ul>
+<li>无序列表</li>
+<li>无序列表</li>
+<li>无序列表</li>
+</ul>
+<h2 id="Table表格"><a href="#Table表格" class="headerlink" title="Table表格"></a>Table表格</h2><p>Ctrl加T，在弹出的表格中选择行数和列数</p>
+<table>
+<thead>
+<tr>
+<th>value</th>
+<th>value</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>value</td>
+<td>value</td>
+<td>value</td>
+</tr>
+</tbody></table>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>输入三个或三个以上-或*后按回车，即可出现分割线</p>
+<hr>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>直接将图片拖入即可</p>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>[链接提示]+(链接地址)，举例：<a target="_blank" rel="noopener" href="https://www.baidu.com/">百度</a></p>
+<h2 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h2><p>$$加回车<br>$$<br>y = 2x ^ 2 + 3x^3;<br>$$</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><p>代码的两端各加一个`</p>
+<p>举例：这是一个行内代码   <code>System.out.print(&quot;Hello World!&quot;);</code></p>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>输入三个~后按回车即可出现代码块编辑器然后选择编程语言</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Hello World.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="导出文件"><a href="#导出文件" class="headerlink" title="导出文件"></a>导出文件</h2><p>可以导出pdf或者html格式的文件</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/springboot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -980,7 +1080,7 @@ CMD /bin/bash
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
