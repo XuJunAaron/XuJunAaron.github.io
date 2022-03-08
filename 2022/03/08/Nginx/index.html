@@ -20,18 +20,24 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="分享关于Java以及Spring生态的开发使用经验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Aaron&#39;s Notes">
-<meta property="og:url" content="http://example.com/tags/Docker%E6%9E%84%E5%BB%BA/index.html">
+  <meta name="description" content="Nginx核心知识第一章 初识Nginx第二章 Nginx架构基础Nginx的模块究竟是什么？ngx_module_t 用来说明每一个模块的结构体 ngx_command_t 用来说明该模块的每一个指令后面可以跟哪些参数，模块内部包括哪些方法 ngx_module_t 还可根据ctx上下文细分为一些子模块，例如ngx_core_module_t、ngx_http_module_t等 每一个子模块可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx核心知识">
+<meta property="og:url" content="http://example.com/2022/03/08/Nginx/index.html">
 <meta property="og:site_name" content="Aaron&#39;s Notes">
-<meta property="og:description" content="分享关于Java以及Spring生态的开发使用经验">
+<meta property="og:description" content="Nginx核心知识第一章 初识Nginx第二章 Nginx架构基础Nginx的模块究竟是什么？ngx_module_t 用来说明每一个模块的结构体 ngx_command_t 用来说明该模块的每一个指令后面可以跟哪些参数，模块内部包括哪些方法 ngx_module_t 还可根据ctx上下文细分为一些子模块，例如ngx_core_module_t、ngx_http_module_t等 每一个子模块可">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/08/b2ZcjA.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/08/b2ZhAf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/08/b2uVU0.png">
+<meta property="article:published_time" content="2022-03-08T15:14:49.065Z">
+<meta property="article:modified_time" content="2022-03-08T15:13:53.000Z">
 <meta property="article:author" content="Aaron">
-<meta property="article:tag" content="个人博客,后端,Java,SpringCloud">
+<meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/03/08/b2ZcjA.png">
 
-<link rel="canonical" href="http://example.com/tags/Docker%E6%9E%84%E5%BB%BA/">
+<link rel="canonical" href="http://example.com/2022/03/08/Nginx/">
 
 
 <script id="page-configurations">
@@ -39,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: Docker构建 | Aaron's Notes</title>
+  <title>Nginx核心知识 | Aaron's Notes</title>
   
 
 
@@ -191,51 +197,124 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Docker构建
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/08/Nginx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Aaron">
+      <meta itemprop="description" content="分享关于Java以及Spring生态的开发使用经验">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aaron's Notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nginx核心知识
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-08 23:14:49 / 修改时间：23:13:53" itemprop="dateCreated datePublished" datetime="2022-03-08T23:14:49+08:00">2022-03-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Web中间件</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>420</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <h1 id="Nginx核心知识"><a href="#Nginx核心知识" class="headerlink" title="Nginx核心知识"></a>Nginx核心知识</h1><h2 id="第一章-初识Nginx"><a href="#第一章-初识Nginx" class="headerlink" title="第一章 初识Nginx"></a>第一章 初识Nginx</h2><h2 id="第二章-Nginx架构基础"><a href="#第二章-Nginx架构基础" class="headerlink" title="第二章 Nginx架构基础"></a>第二章 Nginx架构基础</h2><h3 id="Nginx的模块究竟是什么？"><a href="#Nginx的模块究竟是什么？" class="headerlink" title="Nginx的模块究竟是什么？"></a>Nginx的模块究竟是什么？</h3><p><code>ngx_module_t</code> 用来说明每一个模块的结构体</p>
+<p><code>ngx_command_t</code> 用来说明该模块的每一个指令后面可以跟哪些参数，模块内部包括哪些方法</p>
+<p><code>ngx_module_t</code> 还可根据<code>ctx</code>上下文细分为一些<strong>子模块</strong>，例如<code>ngx_core_module_t</code>、<code>ngx_http_module_t</code>等</p>
+<p>每一个子模块可以自定义自己的规则，回调方法</p>
+<p><code>ngx_module_t</code> 会定义所有模块的<strong>顺序</strong></p>
+<h3 id="Nginx模块的分类"><a href="#Nginx模块的分类" class="headerlink" title="Nginx模块的分类"></a>Nginx模块的分类</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2ZcjA"><img src="https://s1.ax1x.com/2022/03/08/b2ZcjA.png" alt="b2ZcjA.png"></a></p>
+<h3 id="Nginx如何通过连接池处理网络请求"><a href="#Nginx如何通过连接池处理网络请求" class="headerlink" title="Nginx如何通过连接池处理网络请求"></a>Nginx如何通过连接池处理网络请求</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2ZhAf"><img src="https://s1.ax1x.com/2022/03/08/b2ZhAf.png" alt="b2ZhAf.png"></a></p>
+<h3 id="内存池对性能的影响"><a href="#内存池对性能的影响" class="headerlink" title="内存池对性能的影响"></a>内存池对性能的影响</h3><ol>
+<li>连接内存池</li>
+<li>请求内存池</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2uVU0"><img src="https://s1.ax1x.com/2022/03/08/b2uVU0.png" alt="b2uVU0.png"></a></p>
+<p>通过配置<code>connection_pool_size</code>来设定连接内存池大小 <code>default 256</code></p>
+<p>通过配置<code>request_pool_size</code>来设定请求内存池大小 <code>default 4K</code></p>
+<p>内存池对<strong>减少内存碎片</strong>以及<strong>第三方模块的快速开发</strong>有很大意义，对内存池使用不当会导致内存延期释放、导致Nginx的内存无谓的增加</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-21T23:33:27+08:00"
-              content="2022-02-21">
-          02-21
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Nginx/" rel="tag"># Nginx</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/21/DockerFileResolve/" itemprop="url">
-            <span itemprop="name">DockerFile解析</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/21/springboot/" rel="prev" title="SpringBoot概述">
+      <i class="fa fa-chevron-left"></i> SpringBoot概述
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -288,6 +367,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">Nginx核心知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%88%9D%E8%AF%86Nginx"><span class="nav-number">1.1.</span> <span class="nav-text">第一章 初识Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-Nginx%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80"><span class="nav-number">1.2.</span> <span class="nav-text">第二章 Nginx架构基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx%E7%9A%84%E6%A8%A1%E5%9D%97%E7%A9%B6%E7%AB%9F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.2.1.</span> <span class="nav-text">Nginx的模块究竟是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx%E6%A8%A1%E5%9D%97%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.2.</span> <span class="nav-text">Nginx模块的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%A4%84%E7%90%86%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82"><span class="nav-number">1.2.3.</span> <span class="nav-text">Nginx如何通过连接池处理网络请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%B1%A0%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">1.2.4.</span> <span class="nav-text">内存池对性能的影响</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

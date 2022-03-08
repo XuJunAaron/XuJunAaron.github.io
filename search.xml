@@ -332,6 +332,32 @@ CMD /bin/bash
       </tags>
   </entry>
   <entry>
+    <title>Nginx核心知识</title>
+    <url>/2022/03/08/Nginx/</url>
+    <content><![CDATA[<h1 id="Nginx核心知识"><a href="#Nginx核心知识" class="headerlink" title="Nginx核心知识"></a>Nginx核心知识</h1><h2 id="第一章-初识Nginx"><a href="#第一章-初识Nginx" class="headerlink" title="第一章 初识Nginx"></a>第一章 初识Nginx</h2><h2 id="第二章-Nginx架构基础"><a href="#第二章-Nginx架构基础" class="headerlink" title="第二章 Nginx架构基础"></a>第二章 Nginx架构基础</h2><h3 id="Nginx的模块究竟是什么？"><a href="#Nginx的模块究竟是什么？" class="headerlink" title="Nginx的模块究竟是什么？"></a>Nginx的模块究竟是什么？</h3><p><code>ngx_module_t</code> 用来说明每一个模块的结构体</p>
+<p><code>ngx_command_t</code> 用来说明该模块的每一个指令后面可以跟哪些参数，模块内部包括哪些方法</p>
+<p><code>ngx_module_t</code> 还可根据<code>ctx</code>上下文细分为一些<strong>子模块</strong>，例如<code>ngx_core_module_t</code>、<code>ngx_http_module_t</code>等</p>
+<p>每一个子模块可以自定义自己的规则，回调方法</p>
+<p><code>ngx_module_t</code> 会定义所有模块的<strong>顺序</strong></p>
+<h3 id="Nginx模块的分类"><a href="#Nginx模块的分类" class="headerlink" title="Nginx模块的分类"></a>Nginx模块的分类</h3><p><a href="https://imgtu.com/i/b2ZcjA"><img src="https://s1.ax1x.com/2022/03/08/b2ZcjA.png" alt="b2ZcjA.png"></a></p>
+<h3 id="Nginx如何通过连接池处理网络请求"><a href="#Nginx如何通过连接池处理网络请求" class="headerlink" title="Nginx如何通过连接池处理网络请求"></a>Nginx如何通过连接池处理网络请求</h3><p><a href="https://imgtu.com/i/b2ZhAf"><img src="https://s1.ax1x.com/2022/03/08/b2ZhAf.png" alt="b2ZhAf.png"></a></p>
+<h3 id="内存池对性能的影响"><a href="#内存池对性能的影响" class="headerlink" title="内存池对性能的影响"></a>内存池对性能的影响</h3><ol>
+<li>连接内存池</li>
+<li>请求内存池</li>
+</ol>
+<p><a href="https://imgtu.com/i/b2uVU0"><img src="https://s1.ax1x.com/2022/03/08/b2uVU0.png" alt="b2uVU0.png"></a></p>
+<p>通过配置<code>connection_pool_size</code>来设定连接内存池大小 <code>default 256</code></p>
+<p>通过配置<code>request_pool_size</code>来设定请求内存池大小 <code>default 4K</code></p>
+<p>内存池对<strong>减少内存碎片</strong>以及<strong>第三方模块的快速开发</strong>有很大意义，对内存池使用不当会导致内存延期释放、导致Nginx的内存无谓的增加</p>
+]]></content>
+      <categories>
+        <category>Web中间件</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git入门</title>
     <url>/2022/02/21/gitStart/</url>
     <content><![CDATA[<h1 id="git操作手册"><a href="#git操作手册" class="headerlink" title="git操作手册"></a>git操作手册</h1><p>查看<strong>本地</strong>所有分支</p>
