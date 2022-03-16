@@ -20,18 +20,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="分享关于Java以及Spring生态的开发使用经验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Aaron&#39;s Notes">
-<meta property="og:url" content="http://example.com/tags/git/index.html">
+  <meta name="description" content="线性表定义线性表 （linear list） 是 数据结构 的一种，一个线性表是n个具有相同特性的数据元素的有限序列。线性表中的个数n定义为线性表的长度，n&#x3D;0时称为空表。 分类 顺序存储 链式存储  优缺点对比顺序表元素之间物理位置相邻，逻辑位置相邻，不需要使用额外空间维护元素间逻辑关系，方便查找元素。但是插入或者删除元素相对耗时。在等概率前提下，第n个位置插入一个元素平均需要移动n&#x2F;2个元素，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性表简介">
+<meta property="og:url" content="http://example.com/2022/03/16/linkedList/index.html">
 <meta property="og:site_name" content="Aaron&#39;s Notes">
-<meta property="og:description" content="分享关于Java以及Spring生态的开发使用经验">
+<meta property="og:description" content="线性表定义线性表 （linear list） 是 数据结构 的一种，一个线性表是n个具有相同特性的数据元素的有限序列。线性表中的个数n定义为线性表的长度，n&#x3D;0时称为空表。 分类 顺序存储 链式存储  优缺点对比顺序表元素之间物理位置相邻，逻辑位置相邻，不需要使用额外空间维护元素间逻辑关系，方便查找元素。但是插入或者删除元素相对耗时。在等概率前提下，第n个位置插入一个元素平均需要移动n&#x2F;2个元素，">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/16/qplgxJ.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/16/qp1NFK.md.png">
+<meta property="article:published_time" content="2022-03-16T12:24:37.051Z">
+<meta property="article:modified_time" content="2022-03-16T12:24:21.000Z">
 <meta property="article:author" content="Aaron">
-<meta property="article:tag" content="个人博客,后端,Java,SpringCloud">
+<meta property="article:tag" content="-线性表 -数据结构 -单链表">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/03/16/qplgxJ.md.png">
 
-<link rel="canonical" href="http://example.com/tags/git/">
+<link rel="canonical" href="http://example.com/2022/03/16/linkedList/">
 
 
 <script id="page-configurations">
@@ -39,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: git | Aaron's Notes</title>
+  <title>线性表简介 | Aaron's Notes</title>
   
 
 
@@ -191,51 +196,135 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">git
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/16/linkedList/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Aaron">
+      <meta itemprop="description" content="分享关于Java以及Spring生态的开发使用经验">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aaron's Notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          线性表简介
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-16 20:24:37 / 修改时间：20:24:21" itemprop="dateCreated datePublished" datetime="2022-03-16T20:24:37+08:00">2022-03-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>517</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <h3 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>线性表 （linear list） 是 数据结构 的一种，一个线性表是n个具有相同特性的数据元素的<strong>有限序列</strong>。线性表中的个数n定义为线性表的长度，n=0时称为空表。</p>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul>
+<li>顺序存储</li>
+<li>链式存储</li>
+</ul>
+<h4 id="优缺点对比"><a href="#优缺点对比" class="headerlink" title="优缺点对比"></a>优缺点对比</h4><p><strong>顺序表</strong>元素之间<strong>物理位置相邻</strong>，<strong>逻辑位置相邻</strong>，不需要使用额外空间维护元素间逻辑关系，方便<strong>查找</strong>元素。但是插入或者删除元素相对耗时。在等概率前提下，第n个位置<strong>插入</strong>一个元素平均需要移动<code>n/2</code>个元素，在第n个位置<strong>删除</strong>一个元素平均需要移动<code>(n-1)/2</code>个元素</p>
+<p><strong>链表</strong>元素之间<strong>逻辑位置相邻</strong>，<strong>物理位置不相邻</strong>，需要使用额外空间维护元素间逻辑关系，一个链表节点包括<strong>数据域</strong>和<strong>指针域</strong>，方便<strong>插入</strong>或者<strong>删除</strong>元素，查找元素相对耗时</p>
+<h4 id="链表操作过程"><a href="#链表操作过程" class="headerlink" title="链表操作过程"></a>链表操作过程</h4><p>单链表<strong>插入</strong>元素</p>
+<ol>
+<li>将S指针指向的节点的指针域指向P指针指向的节点的后继节点</li>
+<li>将P指针指向的节点的指针域指向S指针指向的节点</li>
+</ol>
+<p>示意图如下：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qplgxJ"><img src="https://s1.ax1x.com/2022/03/16/qplgxJ.md.png" alt="qplgxJ.md.png"></a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s-&gt;next=p-&gt;next;</span><br><span class="line">p-&gt;next=s</span><br></pre></td></tr></table></figure>
+
+<p>单链表<strong>删除</strong>元素</p>
+<ol>
+<li>将临时指针q指向要删除的节点</li>
+<li>将P指针指向的节点的指针域指向P指针指向的节点的后继节点的后继节点</li>
+<li>释放指针q</li>
+</ol>
+<p>示意图如下：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qp1NFK"><img src="https://s1.ax1x.com/2022/03/16/qp1NFK.md.png" alt="qp1NFK.md.png"></a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">q=p-&gt;next;</span><br><span class="line">p-&gt;next=p-&gt;next-&gt;next;</span><br><span class="line"><span class="built_in">free</span>(q)</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-21T23:34:40+08:00"
-              content="2022-02-21">
-          02-21
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%8D%95%E9%93%BE%E8%A1%A8/" rel="tag"># -线性表 -数据结构 -单链表</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/21/gitStart/" itemprop="url">
-            <span itemprop="name">git入门</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/10/softTest/" rel="prev" title="软考考试大纲">
+      <i class="fa fa-chevron-left"></i> 软考考试大纲
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -288,6 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9%E5%AF%B9%E6%AF%94"><span class="nav-number">1.3.</span> <span class="nav-text">优缺点对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="nav-number">1.4.</span> <span class="nav-text">链表操作过程</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
