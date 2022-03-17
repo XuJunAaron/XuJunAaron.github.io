@@ -460,7 +460,7 @@ CMD /bin/bash
 <li>将P指针指向节点的前驱指针指向S指针指向的节点</li>
 </ol>
 <p>示意图如下：（在P指针指向节点的后面插入S指针指向的节点）</p>
-<p><a href="https://imgtu.com/i/qCw0dU"><img src="qCw0dU.md.png" alt="qCw0dU.md.png"></a></p>
+<p><a href="https://imgtu.com/i/qCw0dU"><img src="https://s1.ax1x.com/2022/03/17/qCw0dU.md.png" alt="qCw0dU.md.png"></a></p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">s-&gt;front=p-&gt;front;</span><br><span class="line">p-&gt;front-&gt;next=s; 或者 s-&gt;front-&gt;next=s;</span><br><span class="line">s-&gt;next=p;</span><br><span class="line">p-&gt;front=s</span><br></pre></td></tr></table></figure>
 
 <p>双向链表<strong>删除</strong>元素</p>
@@ -471,7 +471,7 @@ CMD /bin/bash
 <li>释放q指针指向的节点</li>
 </ol>
 <p>示意图如下：（删除P指针指向节点的下一个节点）</p>
-<p><a href="https://imgtu.com/i/qC2g4P"><img src="qC2g4P.md.png" alt="qC2g4P.md.png"></a></p>
+<p><a href="https://imgtu.com/i/qC2g4P"><img src="https://s1.ax1x.com/2022/03/17/qC2g4P.md.png" alt="qC2g4P.md.png"></a></p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">q=p-&gt;next;</span><br><span class="line">p-&gt;next=q-&gt;next;</span><br><span class="line">q-&gt;next-&gt;front=p;</span><br><span class="line"><span class="built_in">free</span>(q)</span><br></pre></td></tr></table></figure>
 
 ]]></content>
