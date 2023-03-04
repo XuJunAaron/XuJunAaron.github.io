@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>Java使用OKHttp进行文件上传</title>
+      <link href="/2023/03/05/Java%E4%BD%BF%E7%94%A8OKHttp%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+      <url>/2023/03/05/Java%E4%BD%BF%E7%94%A8OKHttp%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Java使用OKHttp进行文件上传"><a href="#Java使用OKHttp进行文件上传" class="headerlink" title="Java使用OKHttp进行文件上传"></a>Java使用OKHttp进行文件上传</h3><p>使用场景：服务端使用<strong>InputStream</strong>来接收文件</p><p>客户端使用<strong>post</strong>请求</p><p><strong>headerMap</strong>用于存放<strong>请求头</strong>信息</p><p><strong>paramsMap</strong>用于存放<strong>文件</strong>和<strong>字符串</strong>参数</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">postFile</span><span class="params">(String url, HashMap&lt;String, String&gt; headerMap, HashMap&lt;String, Object&gt; paramsMap)</span> <span class="keyword">throws</span> IOException&#123;</span><br><span class="line"></span><br><span class="line">        MultipartBody.<span class="type">Builder</span> <span class="variable">builder1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MultipartBody</span>.Builder();</span><br><span class="line">        builder1.setType(MultipartBody.FORM);</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, Object&gt; stringObjectEntry : paramsMap.entrySet()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> stringObjectEntry.getKey();</span><br><span class="line">            <span class="type">Object</span> <span class="variable">value</span> <span class="operator">=</span> stringObjectEntry.getValue();</span><br><span class="line">            <span class="keyword">if</span> (value <span class="keyword">instanceof</span> File) &#123;<span class="comment">//如果请求的值是文件</span></span><br><span class="line">                <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> (File) value;</span><br><span class="line">                <span class="comment">//MediaType.parse(&quot;application/octet-stream&quot;)以二进制的形式上传文件</span></span><br><span class="line">                builder1.addFormDataPart(<span class="string">&quot;file&quot;</span>, ((File) value).getName(), RequestBody.create(MediaType.parse(<span class="string">&quot;multipart/form-data&quot;</span>), file));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;<span class="comment">//如果请求的值是string类型</span></span><br><span class="line">                builder1.addFormDataPart(key, value.toString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Request.<span class="type">Builder</span> <span class="variable">requestBuilder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Request</span>.Builder();</span><br><span class="line">        requestBuilder.url(url);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 添加请求头</span></span><br><span class="line">        <span class="keyword">if</span>(CollectionUtil.isNotEmpty(headerMap))&#123;</span><br><span class="line">            Set&lt;String&gt; keys = headerMap.keySet();</span><br><span class="line">            <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">                <span class="type">String</span> <span class="variable">val</span> <span class="operator">=</span> headerMap.get(key);</span><br><span class="line">                requestBuilder.addHeader(key, val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        requestBuilder.post(builder1.build()).url(url);</span><br><span class="line">        <span class="type">Request</span> <span class="variable">request</span> <span class="operator">=</span> requestBuilder.build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> (<span class="type">Response</span> <span class="variable">response</span> <span class="operator">=</span> client.newCall(request).execute()) &#123;</span><br><span class="line">            <span class="type">ResponseBody</span> <span class="variable">responseBody</span> <span class="operator">=</span> response.body();</span><br><span class="line">            <span class="keyword">if</span> (Objects.isNull(responseBody)) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;响应体为空&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">String</span> <span class="variable">strResponse</span> <span class="operator">=</span> responseBody.string();</span><br><span class="line">            log.info(<span class="string">&quot;打印响应参数:&#123;&#125;&quot;</span>, strResponse);</span><br><span class="line">            <span class="keyword">return</span> strResponse;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.toString(),e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>客户端支持上传多个文件，paramsMap中的value设置为File类型的文件即可</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设现在有多个list：List&lt;File&gt; files</span></span><br><span class="line">Map&lt;String, Object&gt; paramsMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"><span class="comment">// 字符串类型参数正常设置即可</span></span><br><span class="line">paramsMap.put(<span class="string">&quot;StringKey&quot;</span>, <span class="string">&quot;StringValue&quot;</span>);</span><br><span class="line"><span class="comment">// 文件类型参数设置方式如下：</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; files.size(); i++) &#123;</span><br><span class="line">    paramsMap.put(<span class="string">&quot;file&quot;</span>+i, files.get(i));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> 后端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java使用httpClient进行文件上传</title>
+      <link href="/2023/03/05/Java%E4%BD%BF%E7%94%A8httpClient%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+      <url>/2023/03/05/Java%E4%BD%BF%E7%94%A8httpClient%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Java使用httpClient进行文件上传"><a href="#Java使用httpClient进行文件上传" class="headerlink" title="Java使用httpClient进行文件上传"></a>Java使用httpClient进行文件上传</h3><p>使用场景：服务端使用<strong>InputStream</strong>来接收文件</p><p>客户端使用<strong>post</strong>请求</p><p>fileNameWithSuffix表示<strong>带后缀</strong>的文件名，例如test.txt</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">postFile</span><span class="params">(String url, String token, String fileNameWithSuffix, InputStream inputStream)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">HttpPost</span> <span class="variable">httpPost</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpPost</span>(url);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 设置请求头</span></span><br><span class="line">        httpPost.setHeader(<span class="string">&quot;Authorization&quot;</span>, token);</span><br><span class="line"></span><br><span class="line">        <span class="type">MultipartEntityBuilder</span> <span class="variable">builder</span> <span class="operator">=</span> MultipartEntityBuilder.create();</span><br><span class="line">        builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);</span><br><span class="line">        builder.addBinaryBody(<span class="string">&quot;file&quot;</span>, inputStream, ContentType.create(<span class="string">&quot;multipart/form-data&quot;</span>), fileNameWithSuffix);</span><br><span class="line"></span><br><span class="line">        <span class="type">HttpEntity</span> <span class="variable">entity</span> <span class="operator">=</span> builder.build();</span><br><span class="line">        httpPost.setEntity(entity);</span><br><span class="line">        <span class="type">CloseableHttpClient</span> <span class="variable">httpClient</span> <span class="operator">=</span> HttpClients.createDefault();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">CloseableHttpResponse</span> <span class="variable">httpResponse</span> <span class="operator">=</span> httpClient.execute(httpPost);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="literal">null</span> != httpResponse) &#123;</span><br><span class="line">                <span class="type">HttpEntity</span> <span class="variable">responseEntity</span> <span class="operator">=</span> httpResponse.getEntity();</span><br><span class="line">                <span class="type">String</span> <span class="variable">responseStr</span> <span class="operator">=</span> EntityUtils.toString(responseEntity, <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">                log.info(<span class="string">&quot;打印响应信息:&#123;&#125;&quot;</span>, responseStr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.toString(),e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> 后端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>读万卷书，行万里路</title>
       <link href="/2023/02/19/%E3%80%8A%E4%BA%BA%E7%94%9F%E7%AE%97%E6%B3%95%E3%80%8B/"/>
       <url>/2023/02/19/%E3%80%8A%E4%BA%BA%E7%94%9F%E7%AE%97%E6%B3%95%E3%80%8B/</url>
@@ -132,9 +186,9 @@
       
         <tags>
             
-            <tag> 源码 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 源码 </tag>
             
             <tag> 开发框架 </tag>
             
