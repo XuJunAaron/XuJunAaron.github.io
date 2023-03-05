@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>MyBatis中xml文件参数为map时高级用法</title>
+      <link href="/2023/03/05/MyBatis%E4%B8%ADXML%E6%96%87%E4%BB%B6%E5%8F%82%E6%95%B0%E4%B8%BAmap%E6%97%B6%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/"/>
+      <url>/2023/03/05/MyBatis%E4%B8%ADXML%E6%96%87%E4%BB%B6%E5%8F%82%E6%95%B0%E4%B8%BAmap%E6%97%B6%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h3 id="MyBatis中xml文件参数为map时高级用法"><a href="#MyBatis中xml文件参数为map时高级用法" class="headerlink" title="MyBatis中xml文件参数为map时高级用法"></a>MyBatis中xml文件参数为map时高级用法</h3><blockquote><p>MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</p></blockquote><p><strong>下面是使用场景</strong></p><blockquote><p>假设前端将许多的参数以Vo的形式传入，我们在Service蹭、Mapper层都传入Vo，我们在xml中就需要对多个查询参数进行判空，比如下面这样：</p></blockquote><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span> = <span class="string">&quot;testXml&quot;</span> <span class="attr">paramsType</span> = <span class="string">&quot;xxx.xxx.Vo&quot;</span> <span class="attr">resultType</span> = <span class="string">&quot;xxx.xxx.Vo&quot;</span>&gt;</span></span><br><span class="line">    select xxx</span><br><span class="line">    from db.table</span><br><span class="line">    <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;null != param1&quot;</span>&gt;</span></span><br><span class="line">            xxx = #&#123;xxx&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;null != param2&quot;</span>&gt;</span></span><br><span class="line">            xxx = #&#123;xxx&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure><p>这种方式实现没有问题，但是有一个小小的弊端就是如果查询参数很多的话，那就要写很多很多的if标签，那么有没有一种类似于循环判断的方式从而不用写那么多if呢？当然有！</p><p>在Service层里面将Vo转成Map后传入Mapper层即可，具体实现如下：</p><p><strong>这是Service层</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;UserDepte&gt; <span class="title function_">getByMap</span><span class="params">(UserQueryParams params)</span>&#123;</span><br><span class="line">        Map&lt;String,String&gt; paramsMap= <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, String&gt;();</span><br><span class="line">        paramsMap.put(<span class="string">&quot;key&quot;</span>, params.getXxx());</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.getByMap(paramsMap);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>这是Mapper层</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">getByMap</span><span class="params">(<span class="meta">@param(&quot;paramsMap&quot;)</span> Map&lt;String,Object&gt; map)</span></span><br></pre></td></tr></table></figure><p><strong>这是对应的XML文件</strong></p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;paramsMap.keys&quot;</span> <span class="attr">item</span>=<span class="string">&quot;k&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;,&quot;</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;null != paramsMap[k]&quot;</span>&gt;</span>    </span><br><span class="line">        $&#123;k&#125; = #&#123;paramsMap[$&#123;k&#125;]&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">foreach</span>&gt;</span>   </span><br></pre></td></tr></table></figure><blockquote><p>这样就一个循环解决参数判空的问题，而不再需要写一堆if</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> MyBatis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java使用OKHttp进行文件上传</title>
       <link href="/2023/03/05/Java%E4%BD%BF%E7%94%A8OKHttp%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
       <url>/2023/03/05/Java%E4%BD%BF%E7%94%A8OKHttp%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
@@ -62,7 +89,7 @@
       <link href="/2023/02/19/%E3%80%8A%E4%BA%BA%E7%94%9F%E7%AE%97%E6%B3%95%E3%80%8B/"/>
       <url>/2023/02/19/%E3%80%8A%E4%BA%BA%E7%94%9F%E7%AE%97%E6%B3%95%E3%80%8B/</url>
       
-        <content type="html"><![CDATA[<h3 id="《人生算法》"><a href="#《人生算法》" class="headerlink" title="《人生算法》"></a>《人生算法》</h3><p><strong>用概率思维做好决策</strong></p><blockquote><p>想象你现在中了一个大奖，你有两个选择：直接拿走100万美元；或有50%的概率获得一亿美元，也有50%的可能什么也拿不到，你会怎么选？</p></blockquote><p><a href="https://imgse.com/i/pSLTGQA"><img src="https://s1.ax1x.com/2023/02/19/pSLTGQA.jpg" alt="pSLTGQA.jpg"></a></p><blockquote><p>多数人会选择直接拿走100万美元，因为他们不愿意承受什么都拿不到的风险。事实上如果你打开思路，把获得一亿美元的机会以2000万美元的机会卖给愿意承担风险的人，你就能赚2000万美元，而不是仅仅获得100万美元。这就是算法思维的力量，它决定了人们不一样的人生轨迹。</p></blockquote><p>​        阿西莫夫说：“科学是一个机制，是扩充你对自然的认知的一个方式。科学是一个系统，用宇宙中的事实验证你的想法是否在正确。这个系统很有效，不仅仅是在科学领域，放到日常生活中也很有用处。”人生算法的实用主义背后，正是这类验证，正如我们的一生也是某种验证一样。</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="《人生算法》"><a href="#《人生算法》" class="headerlink" title="《人生算法》"></a>《人生算法》</h3><p><strong>用概率思维做好决策</strong></p><blockquote><p>想象你现在中了一个大奖，你有两个选择：直接拿走100万美元；或有50%的概率获得一亿美元，也有50%的可能什么也拿不到，你会怎么选？</p></blockquote><p><a href="https://imgse.com/i/pSLTGQA"><img src="https://s1.ax1x.com/2023/02/19/pSLTGQA.jpg" alt="pSLTGQA.jpg"></a></p><blockquote><p>多数人会选择直接拿走100万美元，因为他们不愿意承受什么都拿不到的风险。事实上如果你打开思路，把获得一亿美元的机会以2000万美元的机会卖给愿意承担风险的人，你就能赚2000万美元，而不是仅仅获得100万美元。这就是算法思维的力量，它决定了人们不一样的人生轨迹。</p></blockquote><p>​        阿西莫夫说：“科学是一个机制，是扩充你对自然的认知的一个方式。科学是一个系统，用宇宙中的事实验证你的想法是否在正确。这个系统很有效，不仅仅是在科学领域，放到日常生活中也很有用处。”人生算法的实用主义背后，正是这类验证，正如我们的一生也是某种验证一样。</p><h3 id="《图解设计模式》"><a href="#《图解设计模式》" class="headerlink" title="《图解设计模式》"></a>《图解设计模式》</h3><p><strong>194张图表轻松理解GoF的23种设计模式</strong></p><blockquote><p>作者：【日】结城浩，生于1963年，日本知名技术作家和程序员。在编程语言、设计模式、数学、加密技术等领域，编写了很多深受欢迎的入门书。代表作有《数学女孩》系列、《程序员的数学》、《图解密码技术》等。</p></blockquote><p><a href="https://imgse.com/i/ppEgbWR"><img src="https://s1.ax1x.com/2023/03/05/ppEgbWR.jpg" alt="ppEgbWR.jpg"></a></p><p>​     本书以浅显易懂的语言逐一说明了GoF的23种设计模式。在讲解过程中不仅搭配了丰富的图片，而且理论结合实例，用Java语言编写代码实现了设计模式的程序，让程序真正的运行起来，并提供了运用模式解决具体问题的练习题和答案。除此以外，本书在必要时还对Java语言的功能进行补充说明，以加深读者对Java的理解。本书适合对面向对象开发感兴趣、对设计模式感兴趣的人以及所有Java程序员阅读。</p>]]></content>
       
       
       <categories>
