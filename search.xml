@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>SpringBoot与JDK版本对应关系</title>
+      <link href="/2023/05/30/SpringBoot%E3%80%81JDK%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/"/>
+      <url>/2023/05/30/SpringBoot%E3%80%81JDK%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/</url>
+      
+        <content type="html"><![CDATA[<h3 id="SpringBoot版本标识的含义"><a href="#SpringBoot版本标识的含义" class="headerlink" title="SpringBoot版本标识的含义"></a>SpringBoot版本标识的含义</h3><ol><li>CURRENT：代表了当前版本，最新发布版本，里程碑版本</li><li>GA：通用正式发布版本，同release</li><li>SNAPSHOT：快照版本，可用但非稳定版本</li><li>PRE：预览版本</li><li>RC：(Release　Candidate) 软件选版本。系统平台上的发行候选版本。RC版不会再加入新的功能了，主要着重于除错</li><li>Alpha：测试版，这个阶段的版本会一直加入新的功能。在Alpha版之后推出。</li><li>Beta：测试版，这个阶段的版本会一直加入新的功能。在Alpha版之后推出。</li></ol><p><a href="https://imgse.com/i/p9jjeDP"><img src="https://s1.ax1x.com/2023/05/30/p9jjeDP.png" alt="p9jjeDP.png"></a></p><p><a href="https://imgse.com/i/p9jjcb6"><img src="https://s1.ax1x.com/2023/05/30/p9jjcb6.png" alt="p9jjcb6.png"></a></p><h3 id="版本对应关系"><a href="#版本对应关系" class="headerlink" title="版本对应关系"></a>版本对应关系</h3><table><thead><tr><th>SpringBoot</th><th>SpringFramework</th><th>JDK</th><th>Maven</th></tr></thead><tbody><tr><td>3.x.x</td><td>5.3.x</td><td>17</td><td>3.6.0+</td></tr><tr><td>2.5.x</td><td>5.3.x</td><td>16,15,11,8</td><td>3.6.0+</td></tr><tr><td>2.4.x</td><td>5.3.x</td><td>16,15,11,8</td><td>3.6.2+</td></tr><tr><td>2.3.x</td><td>5.2.x</td><td>14,13,11,8</td><td>3.5.0+</td></tr><tr><td>2.2.x</td><td>5.2.x</td><td>13,12,11,8</td><td>3.3.0+</td></tr><tr><td>2.1.x</td><td>5.1.x</td><td>11,8</td><td>3.3.0+</td></tr><tr><td>2.0.x</td><td>5.0.x</td><td>9,8</td><td>3.3.0+</td></tr><tr><td>1.5.x</td><td>4.3.x</td><td>8</td><td>3.3.0+</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spring </category>
+          
+          <category> SpringBoot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MyBatis中xml文件参数为map时高级用法</title>
       <link href="/2023/03/05/MyBatis%E4%B8%ADXML%E6%96%87%E4%BB%B6%E5%8F%82%E6%95%B0%E4%B8%BAmap%E6%97%B6%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/"/>
       <url>/2023/03/05/MyBatis%E4%B8%ADXML%E6%96%87%E4%BB%B6%E5%8F%82%E6%95%B0%E4%B8%BAmap%E6%97%B6%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/</url>
