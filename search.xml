@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Springboot 如何获取jar包里面的resource资源文件</title>
+      <link href="/2023/06/13/Springboot%20%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96jar%E5%8C%85%E9%87%8C%E9%9D%A2%E7%9A%84resource%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/"/>
+      <url>/2023/06/13/Springboot%20%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96jar%E5%8C%85%E9%87%8C%E9%9D%A2%E7%9A%84resource%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Springboot-如何获取jar包里面的resource资源文件"><a href="#Springboot-如何获取jar包里面的resource资源文件" class="headerlink" title="Springboot 如何获取jar包里面的resource资源文件"></a>Springboot 如何获取jar包里面的resource资源文件</h3><blockquote><p><em>需求：在项目开发中，有时候需要把一些模板文件及静态资源文件放到resource目录中，并且在服务启动的时候去访问这些文件。</em></p></blockquote><p>问题：在本地开发环境中，通过读取对应的文件路径可以正常访问到，但是打成jar包以后，无法通过路径的方式读取到对应文件</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">sourceFilePath</span> <span class="operator">=</span> <span class="built_in">this</span>.getClass().getClassLoader().getResource(<span class="string">&quot;&quot;</span>).getPath();</span><br></pre></td></tr></table></figure><blockquote><p>上述代码在本地没有问题，服务器会报<strong>FileNotFound！</strong></p></blockquote><p>解决方案：</p><p>读取jar里面的静态资源文件时不要使用路径，使用<strong>文件流</strong>读取</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClassPathResource</span>(<span class="string">&quot;&quot;</span>).getInputStream();</span><br></pre></td></tr></table></figure><p>如果需要处理文件，直接用文件流处理，如果必须要通过路径读文件，可以用文件流将文件写入到服务器的目录下，然后再通过路径去读取。</p><p>附上将文件流写入到本地的工具类</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将InputStream流写入到本地</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> targetPath 目标路径</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> inputStream inputStream</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">writeToLocal</span><span class="params">(String targetPath, InputStream inputStream)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">int</span> index;</span><br><span class="line">        <span class="type">byte</span>[] bytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">fileOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(targetPath);</span><br><span class="line">        <span class="keyword">while</span> ((index = inputStream.read(bytes)) != -<span class="number">1</span>)  &#123;</span><br><span class="line">            fileOutputStream.write(bytes, <span class="number">0</span>, index);</span><br><span class="line">            fileOutputStream.flush();</span><br><span class="line">        &#125;</span><br><span class="line">        fileOutputStream.close();</span><br><span class="line">        inputStream.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spring </category>
+          
+          <category> SpringBoot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> 开发遇到的问题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpringBoot与JDK版本对应关系</title>
       <link href="/2023/05/30/SpringBoot%E3%80%81JDK%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/"/>
       <url>/2023/05/30/SpringBoot%E3%80%81JDK%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/</url>
